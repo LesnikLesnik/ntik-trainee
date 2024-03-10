@@ -1,0 +1,13 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://database:5432/nauka_db
+    username: nauka_db
+    password: nauka_db
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none

@@ -2,28 +2,28 @@ package com.example.naukatrainee.service;
 
 import com.example.naukatrainee.dto.EmployeeDto;
 import com.example.naukatrainee.entity.Employee;
+import com.example.naukatrainee.exceptions.BusinessException;
 import com.example.naukatrainee.mapper.EmployeeMapper;
 import com.example.naukatrainee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
 
-    private final EmployeeMapper MAPPER;
-
-    private final EmployeeRepository EMPLOYEE_REPO;
+    private final EmployeeMapper employeeMapper;
+    private final EmployeeRepository employeeRepo;
 
     public EmployeeDto findById(Long id) {
-        Optional<Employee> employeeById = EMPLOYEE_REPO.findById(id);
-        return employeeById.map(MAPPER::toEmployeeDto)
-                .orElseThrow(() -> new RuntimeException("Пользователь с id " + id + " не найден :("));
+        return employeeRepo.findById(id)
+                .map(employeeMapper::toEmployeeDto)
+                .orElseThrow(() -> new BusinessException("Пользователь с id " + id + " не найден :("));
     }
 
     /**
@@ -31,14 +31,12 @@ public class EmployeeService {
      *
      * @return возвращает список уникальных имен
      */
-    public List<String> groupByName() {
-        return EMPLOYEE_REPO.findGroupedNames();
+    public Page<String> groupByName(Pageable pageable) {
+        return employeeRepo.findFirstNamesGroupedByFirstName(pageable);
     }
 
-    public List<EmployeeDto> findBetween(Date start, Date end) {
-        List<Employee> employees = EMPLOYEE_REPO.findBetweenBirthdays(start, end);
-        return employees.stream()
-                .map(MAPPER::toEmployeeDto)
-                .toList();
+    public Page<EmployeeDto> findBetween(Date start, Date end, Pageable pageable) {
+        Page<Employee> employees = employeeRepo.findAllByBirthdayBetween(start, end, pageable);
+        return employees.map(employeeMapper::toEmployeeDto);
     }
 }
