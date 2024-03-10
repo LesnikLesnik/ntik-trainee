@@ -1,9 +1,9 @@
-package com.example.naukatrainee.service;
+package ru.ntik.naukatrainee.service;
 
-import com.example.naukatrainee.dto.EmployeeDto;
-import com.example.naukatrainee.exceptions.BusinessException;
-import com.example.naukatrainee.mapper.EmployeeMapper;
-import com.example.naukatrainee.repository.EmployeeRepository;
+import ru.ntik.naukatrainee.dto.EmployeeDto;
+import ru.ntik.naukatrainee.exceptions.BusinessException;
+import ru.ntik.naukatrainee.mapper.EmployeeMapper;
+import ru.ntik.naukatrainee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.example.naukatrainee.controller.annotations;
+package ru.ntik.naukatrainee.controller.annotations;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

@@ -1,4 +1,4 @@
-package com.example.naukatrainee.exceptions;
+package ru.ntik.naukatrainee.exceptions;
 
 public class BusinessException extends RuntimeException {
 

@@ -1,6 +1,6 @@
-package com.example.naukatrainee.repository;
+package ru.ntik.naukatrainee.repository;
 
-import com.example.naukatrainee.entity.Employee;
+import ru.ntik.naukatrainee.entity.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

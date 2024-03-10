@@ -1,4 +1,4 @@
-package com.example.naukatrainee;
+package ru.ntik.naukatrainee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

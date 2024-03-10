@@ -1,8 +1,8 @@
 version: '3'
 services:
   backend:
-#    TODO
-    build: .
+#    build: .
+    image: 'lesniklesnik/nauka_trainee_back:0.0.1'
     ports:
       - "8080:8080"
     depends_on:

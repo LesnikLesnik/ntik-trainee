@@ -1,4 +1,4 @@
-package com.example.naukatrainee.dto;
+package ru.ntik.naukatrainee.dto;
 
 import lombok.Getter;
 import lombok.Setter;

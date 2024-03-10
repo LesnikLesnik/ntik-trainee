@@ -1,7 +1,7 @@
-package com.example.naukatrainee.mapper;
+package ru.ntik.naukatrainee.mapper;
 
-import com.example.naukatrainee.dto.EmployeeDto;
-import com.example.naukatrainee.entity.Employee;
+import ru.ntik.naukatrainee.dto.EmployeeDto;
+import ru.ntik.naukatrainee.entity.Employee;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,8 @@
-package com.example.naukatrainee.controller;
+package ru.ntik.naukatrainee.controller;
 
-import com.example.naukatrainee.controller.annotations.DefaultApiResponses;
-import com.example.naukatrainee.dto.EmployeeDto;
-import com.example.naukatrainee.service.EmployeeService;
+import ru.ntik.naukatrainee.controller.annotations.DefaultApiResponses;
+import ru.ntik.naukatrainee.dto.EmployeeDto;
+import ru.ntik.naukatrainee.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

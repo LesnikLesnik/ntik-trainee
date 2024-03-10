@@ -1,4 +1,4 @@
-package com.example.naukatrainee.entity;
+package ru.ntik.naukatrainee.entity;
 
 
 import jakarta.persistence.Column;
