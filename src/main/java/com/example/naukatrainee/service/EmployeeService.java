@@ -7,7 +7,10 @@ import com.example.naukatrainee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +24,16 @@ public class EmployeeService {
         Optional<Employee> employeeById = EMPLOYEE_REPO.findById(id);
         return employeeById.map(MAPPER::toEmployeeDto)
                 .orElseThrow(() -> new RuntimeException("Пользователь с id " + id + " не найден :("));
+    }
+
+    public List<String> groupByName() {
+        return EMPLOYEE_REPO.findGroupedNames();
+    }
+
+    public List<EmployeeDto> findBetween(Date start, Date end) {
+        List<Employee> employees = EMPLOYEE_REPO.findBetweenBirthdays(start, end);
+        return employees.stream()
+                .map(MAPPER::toEmployeeDto)
+                .toList();
     }
 }
