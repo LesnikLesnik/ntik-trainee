@@ -1,0 +1,15 @@
+version: '3'
+services:
+  database:
+    image: 'postgres:16.2-alpine'
+    container_name: 'nauka-pg-local'
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: nauka_db
+      POSTGRES_PASSWORD: nauka_db
+      POSTGRES_DB: nauka_db
+volumes:
+  pgdata:

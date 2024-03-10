@@ -6,7 +6,5 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface EmployeeMapper {
-
-    Employee toEmployee (EmployeeDto employeeDto);
     EmployeeDto toEmployeeDto(Employee employee);
 }

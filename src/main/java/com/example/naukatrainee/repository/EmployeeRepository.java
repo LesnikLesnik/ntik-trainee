@@ -1,12 +1,12 @@
 package com.example.naukatrainee.repository;
 
 import com.example.naukatrainee.entity.Employee;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
-import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 //Все запросы нативные в соответствии с заданием

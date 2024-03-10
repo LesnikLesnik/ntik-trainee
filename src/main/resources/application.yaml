@@ -1,8 +1,8 @@
 spring:
   liquibase:
-    change-log: classpath:/db/changelog/changelog-master.xml
+    change-log: classpath:/db/changelog-master.xml
   datasource:
-    url: jdbc:postgresql://database:5432/nauka_db
+    url: jdbc:postgresql://${NAUKA_DATABASE_HOST:localhost}:5432/nauka_db
     username: nauka_db
     password: nauka_db
   jpa:
