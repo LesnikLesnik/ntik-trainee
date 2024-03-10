@@ -5,20 +5,23 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
 @Getter
-//@NoArgsConstructor TODO
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="employees")
 public class Employee {
 
     @Id
     @Column(name="id")
-    public Long id;
+    private Long id;
 
     @Column(name="first_name")
     private String firstName;

@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class EmployeeDto {
-    public Long id;
+    private Long id;
 
     private String firstName;
 

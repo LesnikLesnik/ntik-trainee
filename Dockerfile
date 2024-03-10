@@ -1,17 +1,14 @@
-# Базовый образ
+FROM openjdk:17-jdk-slim AS build
+
+COPY .mvn .mvn
+COPY mvnw .
+COPY pom.xml .
+COPY src src
+
+RUN --mount=type=cache,target=/root/.m2,rw ./mvnw -B package -DskipTests
+
 FROM openjdk:17-jdk-slim
+COPY --from=build target/nauka-trainee-0.0.1-SNAPSHOT.jar .
+EXPOSE 8080
 
-# Установка переменной окружения
-ENV APP_HOME=/app
-
-# Создание директории для приложения
-RUN mkdir -p $APP_HOME
-
-# Копирование файлов приложения
-COPY target/*.jar $APP_HOME/app.jar
-
-# Назначение рабочей директории
-WORKDIR $APP_HOME
-
-# Команда для запуска приложения
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "nauka-trainee-0.0.1-SNAPSHOT.jar"]

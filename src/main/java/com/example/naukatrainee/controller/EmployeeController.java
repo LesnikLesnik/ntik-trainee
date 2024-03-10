@@ -1,7 +1,10 @@
 package com.example.naukatrainee.controller;
 
+import com.example.naukatrainee.controller.annotations.DefaultApiResponses;
 import com.example.naukatrainee.dto.EmployeeDto;
 import com.example.naukatrainee.service.EmployeeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -16,11 +19,14 @@ import java.util.Date;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/employees")
+@DefaultApiResponses
+@Tag(description= "Employee Controller", name="Контроллер сотрудников")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
 
     @GetMapping("/{id}")
+    @Operation(summary = "Получение сотрудника по id")
     public EmployeeDto getEmployeeById(@PathVariable Long id) {
         EmployeeDto employee = employeeService.findById(id);
         log.info("Employee found: {}", employee);
@@ -28,6 +34,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/groupByName")
+    @Operation(summary = "Получение страницы уникальных имен сотрудников")
     public Page<String> getGroupedNames(@PageableDefault(page = 0, size = 15) Pageable pageable) {
         Page<String> groupedNames = employeeService.groupByFirstName(pageable);
         log.info("Grouped names: {}", groupedNames);
@@ -40,9 +47,10 @@ public class EmployeeController {
      * @return список сотрудников в заданном интервале
      */
     @GetMapping("/findBetween")
-    public Page<EmployeeDto> getEmployeesBetweenBirthdays( //TODO
+    @Operation(summary = "Получение страницы сотрудников в заданном интервале дат рождения")
+    public Page<EmployeeDto> getEmployeesBetweenBirthdays(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end,
             @PageableDefault(page = 0, size = 15) Pageable pageable) {
 
         Page<EmployeeDto> employees = employeeService.findBetween(start, end, pageable);
