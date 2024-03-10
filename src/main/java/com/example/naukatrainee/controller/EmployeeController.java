@@ -16,30 +16,35 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    private final EmployeeService EMPL_SERVICE;
+    private final EmployeeService SERVICE;
 
     @GetMapping("/{id}")
     public EmployeeDto getEmployeeById(@PathVariable Long id) {
         Logger logger = LoggerFactory.getLogger(EmployeeController.class);
-        EmployeeDto employee = EMPL_SERVICE.findById(id);
+        EmployeeDto employee = SERVICE.findById(id);
         logger.info("Employee found: {}", employee);
         return employee;
     }
 
-    @GetMapping("/grouped-names")
+    @GetMapping("/groupByName")
     public List<String> getGroupedNames() {
         Logger logger = LoggerFactory.getLogger(EmployeeController.class);
-        List<String> groupedNames = EMPL_SERVICE.groupByName();
+        List<String> groupedNames = SERVICE.groupByName();
         logger.info("Grouped names: {}", groupedNames);
         return groupedNames;
     }
 
-    @GetMapping("/between-birthdays")
+    /**
+     * Поиск между датами в формате ISO (YYYY-MM-DD)
+     *
+     * @return список сотрудников в заданном интервале
+     */
+    @GetMapping("/findBetween")
     public List<EmployeeDto> getEmployeesBetweenBirthdays(
             @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
             @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
         Logger logger = LoggerFactory.getLogger(EmployeeController.class);
-        List<EmployeeDto> employees = EMPL_SERVICE.findBetween(start, end);
+        List<EmployeeDto> employees = SERVICE.findBetween(start, end);
         logger.info("Employees between birthdays {} and {}: {}", start, end, employees);
         return employees;
     }

@@ -26,6 +26,11 @@ public class EmployeeService {
                 .orElseThrow(() -> new RuntimeException("Пользователь с id " + id + " не найден :("));
     }
 
+    /**
+     * Список сгруппированных по именам сотрудников
+     *
+     * @return возвращает список уникальных имен
+     */
     public List<String> groupByName() {
         return EMPLOYEE_REPO.findGroupedNames();
     }

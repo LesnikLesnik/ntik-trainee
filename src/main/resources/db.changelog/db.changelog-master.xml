@@ -4,5 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <!-- Ссылки на другие файлы с изменениями будут добавлены сюда -->
+
+    <include file="db.changelog/1.0.0-create-employee-table.xml"/>
+    <include file="db.changelog/1.0.1-add-data-to-table-employees.xml"/>
+
 </databaseChangeLog>
