@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    image: 'postgres:16.2'
+    container_name: 'nauka-pg-16.2'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_USER=nauka_db'
+      - 'POSTGRES_PASSWORD=nauka_db'
+      - 'POSTGRES_DB=nauka_db'
+
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/nauka_db
+      - SPRING_DATASOURCE_USERNAME=nauka_db
+      - SPRING_DATASOURCE_PASSWORD=nauka_db
